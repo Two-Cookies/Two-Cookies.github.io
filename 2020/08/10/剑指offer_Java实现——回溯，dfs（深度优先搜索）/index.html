@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/8 | Two-Cookies</title>
+  <title>回溯、dfs（深度优先搜索） | Two-Cookies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Two-Cookies">
-<meta property="og:url" content="http://yoursite.com/archives/2020/08/index.html">
+  <meta name="description" content="12. 矩阵中的路径题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如 矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回溯、dfs（深度优先搜索）">
+<meta property="og:url" content="http://yoursite.com/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/index.html">
 <meta property="og:site_name" content="Two-Cookies">
+<meta property="og:description" content="12. 矩阵中的路径题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如 矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/images/image-20200811104039398.png">
+<meta property="article:published_time" content="2020-08-10T13:07:15.000Z">
+<meta property="article:modified_time" content="2020-08-27T14:10:06.841Z">
 <meta property="article:author" content="Two-Cookies">
+<meta property="article:tag" content="剑指Offer">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/images/image-20200811104039398.png">
   
     <link rel="alternative" href="/atom.xml" title="Two-Cookies" type="application/atom+xml">
   
@@ -142,85 +149,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-剑指offer_Java实现——回溯，dfs（深度优先搜索）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      回溯、dfs（深度优先搜索）
+    </h1>
+  
+
+        
+        <a href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-08-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="12-矩阵中的路径"><a href="#12-矩阵中的路径" class="headerlink" title="12. 矩阵中的路径"></a>12. 矩阵中的路径</h4><h5 id="题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。-例如"><a href="#题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。-例如" class="headerlink" title="题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如"></a>题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如</h5><p><img src="images/image-20200811104039398.png" alt="image-20200811104039398"></p>
+<p>矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。</p>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPath</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//初始化一个数组与matrix数组对应，初始值为false，保存路径在matrix数组中走过的位置，走过为true，</span></span><br><span class="line">        <span class="keyword">boolean</span>[] vis = <span class="keyword">new</span> <span class="keyword">boolean</span>[matrix.length];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 一个对二维数组遍历的循环框架。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; rows;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cols; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (panduan(matrix,i,j,rows,cols,str,vis,<span class="number">0</span>)) &#123;<span class="comment">//将当前 i,j位置作为起点，传入递归方法，进行递归、回溯查找。</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">panduan</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str, <span class="keyword">boolean</span>[] vis, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//计算矩阵中的元素在一维数组matrix中的位置下标。</span></span><br><span class="line">        <span class="keyword">int</span> n = i*cols + j;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//递归终止条件：越界判断和当前位置元素是否已经走过</span></span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">0</span> || i &gt;= rows || j &lt; <span class="number">0</span> || j &gt;= cols || vis[n])&#123;</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//递归终止条件：当前位置元素与给定的数组元素是否相等。</span></span><br><span class="line">        <span class="keyword">if</span>(str[index] != matrix[n])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//递归终止条件：当前元素的所在的长度等于给定的字符串数组长度，找到一个符合的路径。</span></span><br><span class="line">        <span class="keyword">if</span> (index == str.length-<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//回溯的核心，在进行递归前（进入此路径时，将此位置上的标记改变成true）</span></span><br><span class="line">        vis[n] = <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 回溯的递归，对于每一个结点有上下左右四个方向的路径，对其进行递归判断；</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">boolean</span> flag = panduan(matrix,i+<span class="number">1</span>,j,rows, cols, str,vis, index+<span class="number">1</span>) ||</span><br><span class="line">                       panduan(matrix,i-<span class="number">1</span>,j,rows, cols, str,vis, index+<span class="number">1</span>)  ||        </span><br><span class="line">                       panduan(matrix,i,j+<span class="number">1</span>,rows, cols, str,vis, index+<span class="number">1</span>)  ||</span><br><span class="line">                       panduan(matrix,i,j-<span class="number">1</span>,rows, cols, str,vis, index+<span class="number">1</span>)  ;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//回溯的核心，在进行递归后（退处此路径时，将此位置上的标记改变成false）</span></span><br><span class="line">        vis[n] = <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="13-机器人的运动范围"><a href="#13-机器人的运动范围" class="headerlink" title="13. 机器人的运动范围"></a>13. 机器人的运动范围</h4><h5 id="题目：地上有一个m行和n列的方格。一个机器人从坐标0-0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。-例如，当k为18时，机器人能够进入方格（35-37），因为3-5-3-7-18。但是，它不能进入方格（35-38），因为3-5-3-8-19。请问该机器人能够达到多少个格子？"><a href="#题目：地上有一个m行和n列的方格。一个机器人从坐标0-0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。-例如，当k为18时，机器人能够进入方格（35-37），因为3-5-3-7-18。但是，它不能进入方格（35-38），因为3-5-3-8-19。请问该机器人能够达到多少个格子？" class="headerlink" title="题目：地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？"></a>题目：地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个与给定的二维数组一样大小的二位数组，用来保存每个格子被经过的状态，0 代表没有被走过， 1代表已经走过。</span></span><br><span class="line">        <span class="keyword">int</span>[][] flag = <span class="keyword">new</span> <span class="keyword">int</span>[rows][cols];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//计数，所有走过的格子 </span></span><br><span class="line">        <span class="keyword">int</span> sum = aeras(threshold,<span class="number">0</span>,<span class="number">0</span>,rows,cols,flag);</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *    回溯递归的核心算法的方法。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> threshold    给定的数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i    当前所在的行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> j    当前所在的列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rows    给定数组的行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cols    给定数组的列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> flag    当前所在位置的状态</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">aeras</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span>[][] flag)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//递归终止条件：边界超出 和 当前位置已被走过</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= rows || j &lt; <span class="number">0</span> || j &gt;=cols || flag[i][j] ==<span class="number">1</span> ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//递归终止条件：当前所在的位置的行列的下标的 个位与十位上的数字之和是否超出 给定的值。</span></span><br><span class="line">        <span class="keyword">if</span> (check(i,j,threshold)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//能进行到这说明当前位置没有被走过，将当前位置标记。</span></span><br><span class="line">        flag[i][j] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//进行递归。 // +1 代表当前格子。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> +  aeras(threshold, i+<span class="number">1</span>, j, rows, cols, flag) +</span><br><span class="line">                    aeras(threshold, i-<span class="number">1</span>, j, rows, cols, flag) +</span><br><span class="line">                    aeras(threshold, i, j+<span class="number">1</span>, rows, cols, flag) +</span><br><span class="line">                    aeras(threshold, i, j-<span class="number">1</span>, rows, cols, flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断当前位置的下标的 个位与十位上的数字之和是否超出 给定的值。</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> threshold)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = (i/<span class="number">10</span>) + (i%<span class="number">10</span>) + (j/<span class="number">10</span>) + (j%<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; threshold) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="回溯-34-二叉树中和为某一值的路径"><a href="#回溯-34-二叉树中和为某一值的路径" class="headerlink" title="(回溯)34. 二叉树中和为某一值的路径"></a>(回溯)34. 二叉树中和为某一值的路径</h4><h5 id="题目：输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。"><a href="#题目：输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。" class="headerlink" title="题目：输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。"></a>题目：输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    <span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root,<span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">/*if (root==null) </span></span><br><span class="line"><span class="comment">            return list;*/</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//进入方法</span></span><br><span class="line">        FindPath(root, target,list,list2);</span><br><span class="line">            <span class="comment">/*实现数组长度的排序</span></span><br><span class="line"><span class="comment">            Collections.sort(res, new Comparator&lt;ArrayList&lt;Integer&gt;&gt;() &#123;</span></span><br><span class="line"><span class="comment">                        @Override</span></span><br><span class="line"><span class="comment">                        public int compare(ArrayList&lt;Integer&gt; o1, ArrayList&lt;Integer&gt; o2) &#123;</span></span><br><span class="line"><span class="comment">                            if (o1.size()&lt;o2.size())&#123;</span></span><br><span class="line"><span class="comment">                                return 1;</span></span><br><span class="line"><span class="comment">                            &#125;else return -1;</span></span><br><span class="line"><span class="comment">                        &#125;</span></span><br><span class="line"><span class="comment">                    &#125;);</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">FindPath</span><span class="params">(TreeNode root, <span class="keyword">int</span> target,</span></span></span><br><span class="line"><span class="function"><span class="params">            ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list, ArrayList&lt;Integer&gt; list2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//终止递归条件</span></span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) </span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        <span class="comment">//保存当前节点的值</span></span><br><span class="line">        <span class="keyword">int</span> value = root.val;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//list2作为一个存 路径的容器</span></span><br><span class="line">        list2.add(value);</span><br><span class="line">        <span class="comment">//判断当前节点是否为叶节点，是则将当前list2中保存的路径添加到list容器中</span></span><br><span class="line">        <span class="keyword">if</span> (target == value &amp;&amp; root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>) </span><br><span class="line">            </span><br><span class="line">            list.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list2));<span class="comment">//这里的new ArrayList&lt;Integer&gt;(list2)，是将当前的list2中的内容传给一个新的对象，将这个新的对象添加到list中，而list2在后面的递归中还需要使用。</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            FindPath(root.left, target-value, list, list2);</span><br><span class="line">            FindPath(root.right, target-value, list, list2);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//这里的是每回退一层，list2的尾节点会被删除。</span></span><br><span class="line">        <span class="comment">//回溯</span></span><br><span class="line">        list2.remove(list2.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*超简洁版本</span></span><br><span class="line"><span class="comment">链接：https://www.nowcoder.com/questionTerminal/b736e784e3e34731af99065031301bca</span></span><br><span class="line"><span class="comment">来源：牛客网</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">public class Solution &#123;</span></span><br><span class="line"><span class="comment">    private ArrayList&lt;ArrayList&lt;Integer&gt;&gt; listAll = new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;();</span></span><br><span class="line"><span class="comment">    private ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</span></span><br><span class="line"><span class="comment">    public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root,int target) &#123;</span></span><br><span class="line"><span class="comment">        if(root == null) return listAll;</span></span><br><span class="line"><span class="comment">        list.add(root.val);</span></span><br><span class="line"><span class="comment">        target -= root.val;</span></span><br><span class="line"><span class="comment">        if(target == 0 &amp;&amp; root.left == null &amp;&amp; root.right == null)</span></span><br><span class="line"><span class="comment">            listAll.add(new ArrayList&lt;Integer&gt;(list));</span></span><br><span class="line"><span class="comment">        FindPath(root.left, target);</span></span><br><span class="line"><span class="comment">        FindPath(root.right, target);</span></span><br><span class="line"><span class="comment">        list.remove(list.size()-1);</span></span><br><span class="line"><span class="comment">        return listAll;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="38-字符串的排列"><a href="#38-字符串的排列" class="headerlink" title="38. 字符串的排列"></a>38. 字符串的排列</h4><h5 id="题目：输入一个字符串-按字典序打印出该字符串中字符的所有排列。例如输入字符串abc-则按字典序打印出由字符a-b-c所能排列出来的所有字符串abc-acb-bac-bca-cab和cba。"><a href="#题目：输入一个字符串-按字典序打印出该字符串中字符的所有排列。例如输入字符串abc-则按字典序打印出由字符a-b-c所能排列出来的所有字符串abc-acb-bac-bca-cab和cba。" class="headerlink" title="题目：输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。"></a>题目：输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">思路：第一步，计算出第一个位置上的可能的数，将第一位与后面的每一位进行交换。</span></span><br><span class="line"><span class="comment">    第二步：固定第一个位置的字符，求后面所有字符的全排列，方法重复第一步的方法。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//基于递归，回溯法。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">Permutation</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">         ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">if</span>(str!=<span class="keyword">null</span> &amp;&amp; str.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">             PermutationHelper(str.toCharArray(),<span class="number">0</span>,list);    <span class="comment">//str.toCharArray()    将此字符串转换为新的字符数组。 </span></span><br><span class="line">             Collections.sort(list);<span class="comment">// .sort() 此方法为排序方法</span></span><br><span class="line">         &#125; </span><br><span class="line">             </span><br><span class="line">        <span class="keyword">return</span>  list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">PermutationHelper</span><span class="params">(<span class="keyword">char</span>[] charArray, <span class="keyword">int</span> i,</span></span></span><br><span class="line"><span class="function"><span class="params">            ArrayList&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(i==charArray.length-<span class="number">1</span>)&#123;<span class="comment">//递归结束条件，此时到达字符串的最后一位。</span></span><br><span class="line">            String val = String.valueOf(charArray);</span><br><span class="line">            <span class="keyword">if</span>(!list.contains(val))<span class="comment">//判断在list中是否有与当前字符串重复的</span></span><br><span class="line">                list.add(val);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j =i;j&lt;charArray.length;j++)&#123;<span class="comment">//前i个字符固定，将第i+1个字符依次与其后面的字符交换位置</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">//递归、回溯的核心代码</span></span><br><span class="line">                swap(charArray,i,j);<span class="comment">//交换第i个和第j个字符的位置</span></span><br><span class="line">                PermutationHelper(charArray, i+<span class="number">1</span>, list);<span class="comment">//递归进行下一个字符的交换</span></span><br><span class="line">                swap(charArray,i,j);<span class="comment">//将交换之后的charArray字符串的第i，j位置上的字符交换回来，进行下一次的i与j++的交换的循环。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//交换所用到的方法。</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">char</span>[] charArray, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> temp = charArray[i];</span><br><span class="line">        charArray[i] = charArray[j];</span><br><span class="line">        charArray[j] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/25/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-08-25T13:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/25/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">经典排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/21/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%88%86%E6%B2%BB/" class="archive-article-date">
-  	<time datetime="2020-08-21T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/21/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%88%86%E6%B2%BB/">分治</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -232,7 +223,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -245,415 +236,171 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E3%80%81%E6%9F%A5%E6%89%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数学、查找
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="toc-number">1.</span> <span class="toc-text">12. 矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A%E8%AF%B7%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%88%A4%E6%96%AD%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E4%B8%80%E6%9D%A1%E5%8C%85%E5%90%AB%E6%9F%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E6%9C%89%E5%AD%97%E7%AC%A6%E7%9A%84%E8%B7%AF%E5%BE%84%E3%80%82%E8%B7%AF%E5%BE%84%E5%8F%AF%E4%BB%A5%E4%BB%8E%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E5%BC%80%E5%A7%8B%EF%BC%8C%E6%AF%8F%E4%B8%80%E6%AD%A5%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%9F%A9%E9%98%B5%E4%B8%AD%E5%90%91%E5%B7%A6%EF%BC%8C%E5%90%91%E5%8F%B3%EF%BC%8C%E5%90%91%E4%B8%8A%EF%BC%8C%E5%90%91%E4%B8%8B%E7%A7%BB%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E3%80%82%E5%A6%82%E6%9E%9C%E4%B8%80%E6%9D%A1%E8%B7%AF%E5%BE%84%E7%BB%8F%E8%BF%87%E4%BA%86%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%EF%BC%8C%E5%88%99%E8%AF%A5%E8%B7%AF%E5%BE%84%E4%B8%8D%E8%83%BD%E5%86%8D%E8%BF%9B%E5%85%A5%E8%AF%A5%E6%A0%BC%E5%AD%90%E3%80%82-%E4%BE%8B%E5%A6%82"><span class="toc-number">1.1.</span> <span class="toc-text">题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4"><span class="toc-number">2.</span> <span class="toc-text">13. 机器人的运动范围</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%9C%B0%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AAm%E8%A1%8C%E5%92%8Cn%E5%88%97%E7%9A%84%E6%96%B9%E6%A0%BC%E3%80%82%E4%B8%80%E4%B8%AA%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%8E%E5%9D%90%E6%A0%870-0%E7%9A%84%E6%A0%BC%E5%AD%90%E5%BC%80%E5%A7%8B%E7%A7%BB%E5%8A%A8%EF%BC%8C%E6%AF%8F%E4%B8%80%E6%AC%A1%E5%8F%AA%E8%83%BD%E5%90%91%E5%B7%A6%EF%BC%8C%E5%8F%B3%EF%BC%8C%E4%B8%8A%EF%BC%8C%E4%B8%8B%E5%9B%9B%E4%B8%AA%E6%96%B9%E5%90%91%E7%A7%BB%E5%8A%A8%E4%B8%80%E6%A0%BC%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E8%83%BD%E8%BF%9B%E5%85%A5%E8%A1%8C%E5%9D%90%E6%A0%87%E5%92%8C%E5%88%97%E5%9D%90%E6%A0%87%E7%9A%84%E6%95%B0%E4%BD%8D%E4%B9%8B%E5%92%8C%E5%A4%A7%E4%BA%8Ek%E7%9A%84%E6%A0%BC%E5%AD%90%E3%80%82-%E4%BE%8B%E5%A6%82%EF%BC%8C%E5%BD%93k%E4%B8%BA18%E6%97%B6%EF%BC%8C%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%83%BD%E5%A4%9F%E8%BF%9B%E5%85%A5%E6%96%B9%E6%A0%BC%EF%BC%8835-37%EF%BC%89%EF%BC%8C%E5%9B%A0%E4%B8%BA3-5-3-7-18%E3%80%82%E4%BD%86%E6%98%AF%EF%BC%8C%E5%AE%83%E4%B8%8D%E8%83%BD%E8%BF%9B%E5%85%A5%E6%96%B9%E6%A0%BC%EF%BC%8835-38%EF%BC%89%EF%BC%8C%E5%9B%A0%E4%B8%BA3-5-3-8-19%E3%80%82%E8%AF%B7%E9%97%AE%E8%AF%A5%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%83%BD%E5%A4%9F%E8%BE%BE%E5%88%B0%E5%A4%9A%E5%B0%91%E4%B8%AA%E6%A0%BC%E5%AD%90%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">题目：地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 &#x3D; 18。但是，它不能进入方格（35,38），因为3+5+3+8 &#x3D; 19。请问该机器人能够达到多少个格子？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF-34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="toc-number">3.</span> <span class="toc-text">(回溯)34. 二叉树中和为某一值的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A%E8%BE%93%E5%85%A5%E4%B8%80%E9%A2%97%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A0%B9%E8%8A%82%E7%82%B9%E5%92%8C%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%EF%BC%8C%E6%8C%89%E5%AD%97%E5%85%B8%E5%BA%8F%E6%89%93%E5%8D%B0%E5%87%BA%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%BB%93%E7%82%B9%E5%80%BC%E7%9A%84%E5%92%8C%E4%B8%BA%E8%BE%93%E5%85%A5%E6%95%B4%E6%95%B0%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E3%80%82%E8%B7%AF%E5%BE%84%E5%AE%9A%E4%B9%89%E4%B8%BA%E4%BB%8E%E6%A0%91%E7%9A%84%E6%A0%B9%E7%BB%93%E7%82%B9%E5%BC%80%E5%A7%8B%E5%BE%80%E4%B8%8B%E4%B8%80%E7%9B%B4%E5%88%B0%E5%8F%B6%E7%BB%93%E7%82%B9%E6%89%80%E7%BB%8F%E8%BF%87%E7%9A%84%E7%BB%93%E7%82%B9%E5%BD%A2%E6%88%90%E4%B8%80%E6%9D%A1%E8%B7%AF%E5%BE%84%E3%80%82"><span class="toc-number">3.1.</span> <span class="toc-text">题目：输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">38. 字符串的排列</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%8C%89%E5%AD%97%E5%85%B8%E5%BA%8F%E6%89%93%E5%8D%B0%E5%87%BA%E8%AF%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%AD%97%E7%AC%A6%E7%9A%84%E6%89%80%E6%9C%89%E6%8E%92%E5%88%97%E3%80%82%E4%BE%8B%E5%A6%82%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2abc-%E5%88%99%E6%8C%89%E5%AD%97%E5%85%B8%E5%BA%8F%E6%89%93%E5%8D%B0%E5%87%BA%E7%94%B1%E5%AD%97%E7%AC%A6a-b-c%E6%89%80%E8%83%BD%E6%8E%92%E5%88%97%E5%87%BA%E6%9D%A5%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%97%E7%AC%A6%E4%B8%B2abc-acb-bac-bca-cab%E5%92%8Ccba%E3%80%82"><span class="toc-number">4.1.</span> <span class="toc-text">题目：输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+  
+  
+
+  
+
+  
+
+  
+  
+      <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: 'your clientID',
+  clientSecret: 'your clientSecret',
+  repo: 'git_comment',
+  owner: 'findtheonlyway',
+  admin: ['erbiduo'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+  
+
+
+<header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      回溯、dfs（深度优先搜索）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+  <a href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-08-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">斐波那契数列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
   
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%A0%88/">栈结构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%A0%91/">树结构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/">链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E4%BD%8D%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/">堆</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/08/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/08/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
-
-
+</header>
           </div>
         </div>
       </div>
@@ -699,8 +446,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

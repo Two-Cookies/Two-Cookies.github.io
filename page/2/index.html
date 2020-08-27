@@ -43,7 +43,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/photo.png" class="js-avatar">
+			<img src="/assets/photo.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -55,7 +55,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -93,13 +95,15 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/photo.png" class="js-avatar">
+				<img src="/assets/photo.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
+			
+				
 			
 				
 			
@@ -116,12 +120,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -138,18 +144,257 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-剑指offer_Java实现——数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-剑指offer_Java实现——数学、查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E3%80%81%E6%9F%A5%E6%89%BE/">数学、查找</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E3%80%81%E6%9F%A5%E6%89%BE/" class="archive-article-date">
+  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##数组</p>
-<h4 id="3、数组中重复的数字"><a href="#3、数组中重复的数字" class="headerlink" title="3、数组中重复的数字"></a>3、数组中重复的数字</h4><p>#####题目：找出数组中重复的数字</p>
-<p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2或者3。</p>
-<p>分析：由于数组中的数字是从0~n-1的范围，若没有重复元素，则当数组按照从小到大的顺序排列时，则下标于其对应位置上的数字是相等的。    </p>
+        <h4 id="43-1-n整数中1出现的次数"><a href="#43-1-n整数中1出现的次数" class="headerlink" title="43. 1 ~ n整数中1出现的次数"></a>43. 1 ~ n整数中1出现的次数</h4><h5 id="题目：输入一个整数n，求1n这n个整数的十进制表示中1出现的次数。例如，输入12，112这些整数中包含1的数字有1、10、11和12，1一共出现了5次。"><a href="#题目：输入一个整数n，求1n这n个整数的十进制表示中1出现的次数。例如，输入12，112这些整数中包含1的数字有1、10、11和12，1一共出现了5次。" class="headerlink" title="题目：输入一个整数n，求1n这n个整数的十进制表示中1出现的次数。例如，输入12，112这些整数中包含1的数字有1、10、11和12，1一共出现了5次。"></a>题目：输入一个整数n，求1<del>n这n个整数的十进制表示中1出现的次数。例如，输入12，1</del>12这些整数中包含1的数字有1、10、11和12，1一共出现了5次。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> *     思路：</span></span><br><span class="line"><span class="comment"> *         个位：对于个位上，每0~9出现1次，例如1、11、21等等，我们发现以10为一个阶梯的话，</span></span><br><span class="line"><span class="comment"> *             每一个完整的阶梯里都有一个1，例如22，按照10为间隔来分为三个阶梯，在完整的阶梯有0-9，10-19中都有一个1，</span></span><br><span class="line"><span class="comment"> *             但是19之后有一个不完整的阶梯，我们需要去判断这个阶梯中会不会出现1，易推断知，如果最后这个露出来的部分小于1，</span></span><br><span class="line"><span class="comment"> *             则不可能出现1.</span></span><br><span class="line"><span class="comment"> *         </span></span><br><span class="line"><span class="comment"> *         可以归纳个位上出现1的个数为：</span></span><br><span class="line"><span class="comment"> *         -------------------------------</span></span><br><span class="line"><span class="comment"> *         (n/10)*1 + (n%10 != 0 ? 1:0)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         十位：对于十位上出现1的情况是10-19，依然使用分析个位数时候的阶梯理论，我们知道10-19这组数，每隔100出现1次，</span></span><br><span class="line"><span class="comment"> *             这次我们的阶梯是100，例如数字317，分析有阶梯0-99、100-199、200-299、三个完整的阶梯，每一段阶梯里面都会出现10次1(从10-19)，</span></span><br><span class="line"><span class="comment"> *             最后分析露出来的那段不完整的阶梯。考虑到如果露出来的数大于19，那么直接算10个1就行了，因为10-19肯定会出现；如果小于10，</span></span><br><span class="line"><span class="comment"> *             那么肯定不会出现十位数是1的数；如果在10-19之间，我们计算结果应该是k-10+1.例如300~317，17个数，十位上出现1的数的个数是10~17，也就=17-10+1 = 8个。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         归纳十位上出现1的个数为：</span></span><br><span class="line"><span class="comment"> *         -------------------------------</span></span><br><span class="line"><span class="comment"> *         设k = n%100，即为不完整阶段的数字</span></span><br><span class="line"><span class="comment"> *         (n/100)*10 + (if(k&gt;19)    10;    else if(k&lt;10)    0;    else    k-10+1;)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         百位：对于百位上出现的1，我们知道100-199都会出现百位1，一共出现100次，阶梯为1000，假设数字为 2139.与上述的思想相同，先计算阶梯数完整的1在百位上出现的个数，</span></span><br><span class="line"><span class="comment"> *             即(n/1000)*100,在计算不完整露出的部分，沿用上面的分析思想，不完整的k&gt;199,得到100个百位1，100&lt;=k&lt;=199则得到k-100+1个百位1.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         归纳百位上出现的1的个数为：</span></span><br><span class="line"><span class="comment"> *         -------------------------------</span></span><br><span class="line"><span class="comment"> *         设k=n%1000</span></span><br><span class="line"><span class="comment"> *         (n/1000)*1000 + (if (k&gt;199)    100; else if(k&lt;100)    0; else    k-100+1;)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         后面依次类推。。。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         在回顾个位</span></span><br><span class="line"><span class="comment"> *         把个位数上算1的个数的式子也纳入归纳式中</span></span><br><span class="line"><span class="comment"> *         ---------------------------------</span></span><br><span class="line"><span class="comment"> *         设k = n % 10</span></span><br><span class="line"><span class="comment"> *         个位数上1的个数为：(n/10)*1 + (if(k&gt;1)    1; else if(k&lt;1)    0; else k-1+1;)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         将上述的几个归纳式抽象归纳以下，设 i 为计算 1 所在的位数，i = 1 表示计算个位数的1的个数，10表示计算十位数的1的个数。。。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *         设 k = n % (i*10)</span></span><br><span class="line"><span class="comment"> *         count(i) = (n/(i*10))*i + (if(k &gt; i*2-1) i; else if(k &lt; i) 0;else k-i+1;)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">NumberOf1Between1AndN_Solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n&lt;=<span class="number">0</span>) </span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 从低位的1的个数开始算起</span></span><br><span class="line"><span class="comment">         * i 表示 当前所求的位，个位 对应1 只有一个，十位对应的1 的数字有10个，百位对应1 的数字有一百个。</span></span><br><span class="line"><span class="comment">         * </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i*=<span class="number">10</span>)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> sum ;</span><br><span class="line">            <span class="keyword">int</span> k = n % (i*<span class="number">10</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(k&gt;(i*<span class="number">2</span>-<span class="number">1</span>))</span><br><span class="line">                sum =i ;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(k&lt;i)</span><br><span class="line">                sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                sum = k-i+<span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">            count += (n/(i*<span class="number">10</span>))*i + sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="49-丑数"><a href="#49-丑数" class="headerlink" title="49. 丑数"></a>49. 丑数</h4><h5 id="题目：-把只包含质因子2、3和5的数称作丑数（Ugly-Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。-习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。"><a href="#题目：-把只包含质因子2、3和5的数称作丑数（Ugly-Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。-习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。" class="headerlink" title="题目： 把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。"></a>题目： 把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">通俗易懂的解释：</span></span><br><span class="line"><span class="comment">        首先从丑数的定义我们知道，一个丑数的因子只有2,3,5，那么丑数p = 2 ^ x * 3 ^ y * 5 ^ z，</span></span><br><span class="line"><span class="comment">        换句话说一个丑数一定由另一个丑数乘以2或者乘以3或者乘以5得到，那么我们从1开始乘以2,3,5，就得到2,3,5三个丑数，</span></span><br><span class="line"><span class="comment">        在从这三个丑数出发乘以2,3,5就得到4，6,10,6，9,15,10,15,25九个丑数，我们发现这种方***得到重复的丑数，而且我们题目要求第N个丑数，</span></span><br><span class="line"><span class="comment">        这样的方法得到的丑数也是无序的。那么我们可以维护三个队列：</span></span><br><span class="line"><span class="comment">    （1）丑数数组： 1</span></span><br><span class="line"><span class="comment">            乘以2的队列：2</span></span><br><span class="line"><span class="comment">            乘以3的队列：3</span></span><br><span class="line"><span class="comment">            乘以5的队列：5</span></span><br><span class="line"><span class="comment">        选择三个队列头最小的数2加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</span></span><br><span class="line"><span class="comment">    （2）丑数数组：1,2</span></span><br><span class="line"><span class="comment">            乘以2的队列：4</span></span><br><span class="line"><span class="comment">            乘以3的队列：3，6</span></span><br><span class="line"><span class="comment">            乘以5的队列：5，10</span></span><br><span class="line"><span class="comment">        选择三个队列头最小的数3加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</span></span><br><span class="line"><span class="comment">    （3）丑数数组：1,2,3</span></span><br><span class="line"><span class="comment">            乘以2的队列：4,6</span></span><br><span class="line"><span class="comment">            乘以3的队列：6,9</span></span><br><span class="line"><span class="comment">            乘以5的队列：5,10,15</span></span><br><span class="line"><span class="comment">        选择三个队列头里最小的数4加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</span></span><br><span class="line"><span class="comment">    （4）丑数数组：1,2,3,4</span></span><br><span class="line"><span class="comment">            乘以2的队列：6，8</span></span><br><span class="line"><span class="comment">            乘以3的队列：6,9,12</span></span><br><span class="line"><span class="comment">            乘以5的队列：5,10,15,20</span></span><br><span class="line"><span class="comment">        选择三个队列头里最小的数5加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</span></span><br><span class="line"><span class="comment">    （5）丑数数组：1,2,3,4,5</span></span><br><span class="line"><span class="comment">            乘以2的队列：6,8,10，</span></span><br><span class="line"><span class="comment">            乘以3的队列：6,9,12,15</span></span><br><span class="line"><span class="comment">            乘以5的队列：10,15,20,25</span></span><br><span class="line"><span class="comment">        选择三个队列头里最小的数6加入丑数数组，但我们发现，有两个队列头都为6，所以我们弹出两个队列头，同时将12,18,30放入三个队列；</span></span><br><span class="line"><span class="comment">    ……………………</span></span><br><span class="line"><span class="comment">    疑问：</span></span><br><span class="line"><span class="comment">        1.为什么分三个队列？</span></span><br><span class="line"><span class="comment">            丑数数组里的数一定是有序的，因为我们是从丑数数组里的数乘以2,3,5选出的最小数，一定比以前未乘以2,3,5大，同时对于三个队列内部，按先后顺序乘以2,3,5分别放入，所以同一个队列内部也是有序的；</span></span><br><span class="line"><span class="comment">        2.为什么比较三个队列头部最小的数放入丑数数组？</span></span><br><span class="line"><span class="comment">            因为三个队列是有序的，所以取出三个头中最小的，等同于找到了三个队列所有数中最小的。</span></span><br><span class="line"><span class="comment">    实现思路：</span></span><br><span class="line"><span class="comment">        我们没有必要维护三个队列，只需要记录三个指针显示到达哪一步；“|”表示指针,arr表示丑数数组；</span></span><br><span class="line"><span class="comment">    （1）1</span></span><br><span class="line"><span class="comment">    |2</span></span><br><span class="line"><span class="comment">    |3</span></span><br><span class="line"><span class="comment">    |5</span></span><br><span class="line"><span class="comment">    目前指针指向0,0,0，队列头arr[0] * 2 = 2,  arr[0] * 3 = 3,  arr[0] * 5 = 5</span></span><br><span class="line"><span class="comment">    （2）1 2</span></span><br><span class="line"><span class="comment">    2 |4</span></span><br><span class="line"><span class="comment">    |3 6</span></span><br><span class="line"><span class="comment">    |5 10</span></span><br><span class="line"><span class="comment">    目前指针指向1,0,0，队列头arr[1] * 2 = 4,  arr[0] * 3 = 3, arr[0] * 5 = 5</span></span><br><span class="line"><span class="comment">    （3）1 2 3</span></span><br><span class="line"><span class="comment">    2| 4 6</span></span><br><span class="line"><span class="comment">    3 |6 9</span></span><br><span class="line"><span class="comment">    |5 10 15</span></span><br><span class="line"><span class="comment">    目前指针指向1,1,0，队列头arr[1] * 2 = 4,  arr[1] * 3 = 6, arr[0] * 5 = 5</span></span><br><span class="line"><span class="comment">    ………………</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">GetUglyNumber_Solution</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt;= <span class="number">0</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[index];<span class="comment">//容器，存放丑数</span></span><br><span class="line">        num[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//定义三个指针，分别指向各自的虚拟队列中走到哪一步了，</span></span><br><span class="line">        <span class="keyword">int</span> i2 = <span class="number">0</span>,i3 = <span class="number">0</span>,i5 = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">1</span>;i&lt;index;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> m2 = num[i2]* <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> m3 = num[i3] * <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">int</span> m5 = num[i5] * <span class="number">5</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> min = Math.min(m2, Math.min(m3, m5));</span><br><span class="line">            num[i]=min;    </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>( min == m2) i2++;</span><br><span class="line">            <span class="keyword">if</span>( min == m3) i3++;</span><br><span class="line">            <span class="keyword">if</span>( min == m5) i5++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> num[index-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="50-第一个只出现一次的字符"><a href="#50-第一个只出现一次的字符" class="headerlink" title="50. 第一个只出现一次的字符"></a>50. 第一个只出现一次的字符</h4><h5 id="题目一：在字符串中找出第一个只出现一次的字符。如输入”abaccdeff”，则输出’b’。要求时间复杂度为O-n-。"><a href="#题目一：在字符串中找出第一个只出现一次的字符。如输入”abaccdeff”，则输出’b’。要求时间复杂度为O-n-。" class="headerlink" title="题目一：在字符串中找出第一个只出现一次的字符。如输入”abaccdeff”，则输出’b’。要求时间复杂度为O(n)。"></a>题目一：在字符串中找出第一个只出现一次的字符。如输入”abaccdeff”，则输出’b’。要求时间复杂度为O(n)。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用int[] 模拟hashTable，</span></span><br><span class="line"><span class="comment">     * 字符（char）是一个长度为8的数据类型，因此总共有256种可能。（在C#中char则是长度为16位也就是2个字节）这里我们只列举char是1个字节的情况，</span></span><br><span class="line"><span class="comment">     * 我们创建一个长度为256的数组来模拟哈希表，每个字母根据其ASCII码值作为数组的下标对应数组的一个数字，而数组中存储的是每个字符出现的次数。</span></span><br><span class="line"><span class="comment">     * 计算下来，它的大小是256*4字节（1个int类型在Windows下占4个字节）=1K。 由于这个数组的大小是个常数，因此可以认为这种算法的空间复杂度是O(1)。</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">FirstNotRepeatingChar</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (str.length() ==<span class="number">0</span> || str == <span class="string">&quot;&quot;</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] array = str.toCharArray();</span><br><span class="line">        <span class="keyword">int</span>[] hashTable = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];<span class="comment">//使用int[] 模拟hashTable，</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; hashTable.length; i++) &#123;<span class="comment">//将hashTable初始化为0.</span></span><br><span class="line">            hashTable[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            hashTable[array[i]]++;        <span class="comment">//</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashTable[array[i]] == <span class="number">1</span>) &#123;<span class="comment">//遍历出第一个array[i] 转换后是下标的hashTable的里面存为1的。</span></span><br><span class="line">                <span class="keyword">return</span>    array[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//测试用例。</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">char</span> actual = Test52.FirstNotRepeatingChar(<span class="string">&quot;google&quot;</span>);</span><br><span class="line">            System.out.println(actual);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//解法二、主要需要知道字母所对应的ASCII的码是多少，从哪开始。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 题目：</span></span><br><span class="line"><span class="comment">     *     在一个字符串(0&lt;=字符串长度&lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     *         解题思路，其实主要还是hash，利用每个字母的ASCII码作hash来作为数组的index。首先用一个58长度的数组来存储每个字母出现的次数，</span></span><br><span class="line"><span class="comment">     *         为什么是58呢，主要是由于A-Z对应的ASCII码为65-90，a-z对应的ASCII码值为97-122，而每个字母的index=int(word)-65，比如g=103-65=38，</span></span><br><span class="line"><span class="comment">     *         而数组中具体记录的内容是该字母出现的次数，最终遍历一遍字符串，找出第一个数组内容为1的字母就可以了，时间复杂度为O(n)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span>[] words = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">58</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;str.length();i++)&#123;</span><br><span class="line">                words[((<span class="keyword">int</span>)str.charAt(i))-<span class="number">65</span>] += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length();i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(words[((<span class="keyword">int</span>)str.charAt(i))-<span class="number">65</span>]==<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="题目二：字符流中第一个只出现一次的字符"><a href="#题目二：字符流中第一个只出现一次的字符" class="headerlink" title="题目二：字符流中第一个只出现一次的字符"></a>题目二：字符流中第一个只出现一次的字符</h5><p>请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。 </p>
+<p>输出描述:</p>
+<p>如果当前字符流没有存在出现一次的字符，返回#字符。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要的思想是利用一个数组，而且数组的下标就是该字符代表的整数</span></span><br><span class="line">    <span class="comment">//Insert one char from stringstream</span></span><br><span class="line">    <span class="keyword">int</span>[] hashTable = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];<span class="comment">//因为这个字符是由8位组成，ASCII码可能的字符有256个，所以这的数组最大是256个</span></span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();<span class="comment">//定义一个容器，来装输入流的字符。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        sb.append(ch);<span class="comment">//接收输入的字符</span></span><br><span class="line">        <span class="keyword">if</span> (hashTable[ch]==<span class="number">0</span>) &#123;<span class="comment">//如果是第一次出现的字符，则其对应的ASCII码作为下标的数组的元素为0.</span></span><br><span class="line">            hashTable[ch] =    <span class="number">1</span>;<span class="comment">//将其标记为1。</span></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            hashTable[ch] += <span class="number">1</span>;<span class="comment">//不是第一次出现，则将出现次数累加。</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//return the first appearence once char in current stringstream</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">FirstAppearingOnce</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] temp = sb.toString().toCharArray();<span class="comment">//将sb接收的字符串转换为char数组。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> ch : temp) &#123;<span class="comment">//对char数组遍历</span></span><br><span class="line">            <span class="keyword">if</span> (hashTable[ch] ==<span class="number">1</span>) &#123;<span class="comment">//按照char数组中的顺序，也即是接收字符的顺序，查找对应的hashTable数组中的次数。</span></span><br><span class="line">                <span class="keyword">return</span> ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    <span class="keyword">int</span>[] hashtable = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line">    <span class="comment">//Insert one char from stringstream</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        sb.append(ch);</span><br><span class="line">        <span class="keyword">if</span> (hashtable[ch]==<span class="number">0</span>)</span><br><span class="line">            hashtable[ch]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            hashtable[ch]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//return the first appearence once char in current stringstream</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">FirstAppearingOnce</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;sb.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (hashtable[sb.charAt(i)]==<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> sb.charAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2020/08/09/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
         
+        
+    </div>
+</aside>
+
+
+
+
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E3%80%81%E6%9F%A5%E6%89%BE/">数学、查找</a>
+    </h1>
+  
+
+  
+  <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E3%80%81%E6%9F%A5%E6%89%BE/" class="archive-article-date">
+  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
+  
+    <article id="post-剑指offer_Java实现——回溯，dfs（深度优先搜索）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/">回溯、dfs（深度优先搜索）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-08-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="12-矩阵中的路径"><a href="#12-矩阵中的路径" class="headerlink" title="12. 矩阵中的路径"></a>12. 矩阵中的路径</h4><h5 id="题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。-例如"><a href="#题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。-例如" class="headerlink" title="题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如"></a>题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如</h5><p><img src="images/image-20200811104039398.png" alt="image-20200811104039398"></p>
+<p>矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。</p>
+        
+          <a class="article-more-a" href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/">回溯、dfs（深度优先搜索）</a>
+    </h1>
+  
+
+  
+  <a href="/2020/08/10/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF%EF%BC%8Cdfs%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-08-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/10/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/10/hello-world/" class="archive-article-date">
+  	<time datetime="2020-08-10T07:21:10.791Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
       
 
       
@@ -186,9 +431,248 @@
 
 
 
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/10/hello-world/">Hello World</a>
+    </h1>
+  
+
+  
+  <a href="/2020/08/10/hello-world/" class="archive-article-date">
+  	<time datetime="2020-08-10T07:21:10.791Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
+  
+    <article id="post-剑指offer_Java实现——动态规划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="archive-article-date">
+  	<time datetime="2020-08-05T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="14-剪绳子"><a href="#14-剪绳子" class="headerlink" title="14. 剪绳子"></a>14. 剪绳子</h4><h5 id="题目：给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n-gt-1并且m-gt-1，m-lt-n），每段绳子的长度记为k-1-…-k-m-。请问k-1-x…xk-m-可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。"><a href="#题目：给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n-gt-1并且m-gt-1，m-lt-n），每段绳子的长度记为k-1-…-k-m-。请问k-1-x…xk-m-可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。" class="headerlink" title="题目：给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n&gt;1并且m&gt;1，m&lt;=n），每段绳子的长度记为k[1],…,k[m]。请问k[1]x…xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。"></a>题目：给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n&gt;1并且m&gt;1，m&lt;=n），每段绳子的长度记为k[1],…,k[m]。请问k[1]x…xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</h5>
+        
+          <a class="article-more-a" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+    </h1>
+  
+
+  
+  <a href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="archive-article-date">
+  	<time datetime="2020-08-05T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
+  
+    <article id="post-剑指offer_Java实现——大数问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/">大数问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-08-05T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="17-打印从1-n位的最大的n位数"><a href="#17-打印从1-n位的最大的n位数" class="headerlink" title="17 .打印从1-n位的最大的n位数"></a>17 .打印从1-n位的最大的n位数</h4><h5 id="题目：输入数字n，按顺序打印出从1到最大的n位十进制数。比如输入3，则打印出1、2、3一致到最大的3位数999"><a href="#题目：输入数字n，按顺序打印出从1到最大的n位十进制数。比如输入3，则打印出1、2、3一致到最大的3位数999" class="headerlink" title="题目：输入数字n，按顺序打印出从1到最大的n位十进制数。比如输入3，则打印出1、2、3一致到最大的3位数999."></a>题目：输入数字n，按顺序打印出从1到最大的n位十进制数。比如输入3，则打印出1、2、3一致到最大的3位数999.</h5><p>​    分析：此为一个大数问题，题目没给出n的具体数值，所以n有可能是超过int或者long的范围，不能使用for如循环一直加，</p>
+<p>​            最好的方法就是，使用char[] 来表示一个n位数，</p>
+        
+          <a class="article-more-a" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/">大数问题</a>
+    </h1>
+  
+
+  
+  <a href="/2020/08/05/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-08-05T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
   
     <article id="post-Docker中下载使用Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/Docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8Redis/">docker中下载Redis</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/15/Docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8Redis/" class="archive-article-date">
+  	<time datetime="2020-07-15T13:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -205,7 +689,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/docker//" class="article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -234,9 +740,43 @@
 
 
 
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/Docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8Redis/">docker中下载Redis</a>
+    </h1>
+  
+
+  
+  <a href="/2020/07/15/Docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8Redis/" class="archive-article-date">
+  	<time datetime="2020-07-15T13:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
   
     <article id="post-docker学习中的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/">docker学习踩的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/15/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/" class="archive-article-date">
+  	<time datetime="2020-07-15T13:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -247,7 +787,7 @@
 <p>​    -d：代表后台运行</p>
 <p>​    -p：代表端口映射 虚拟主机的端口 : 容器内部端口</p>
         
-          <a class="article-more-a" href="/2020/07/07/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/15/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/#more">more >></a>
         
       
 
@@ -256,7 +796,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/docker//" class="article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -285,6 +847,25 @@
 
 
 
+<header class="article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/">docker学习踩的坑</a>
+    </h1>
+  
+
+  
+  <a href="/2020/07/15/docker%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%9D%91/" class="archive-article-date">
+  	<time datetime="2020-07-15T13:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
   
   
     <nav id="page-nav">
@@ -296,7 +877,8 @@
           </div>
         </div>
       </div>
-      <footer id="footer">
+      <!--
+<footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
@@ -304,6 +886,30 @@
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+-->
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2020 Two-Cookies
+    	</div>
+      	<div class="footer-right">
+    
+    
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      		<span id="busuanzi_container_site_pv">
+                Total visits to this site: <span id="busuanzi_value_site_pv">20</span>Times
+            </span>
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_container_site_uv">
+                The number of visitors to this site: <span id="busuanzi_value_site_uv">2</span>
+            </span>
+    
+    
       	</div>
     </div>
   </div>
@@ -377,6 +983,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">剑指Offer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
