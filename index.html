@@ -144,6 +144,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-使用MyBatis-generator自动生成DAO、DAOMapper、Mapper映射文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用MyBatis-generator自动生成DAO、DAOMapper、Mapper映射文件"><a href="#使用MyBatis-generator自动生成DAO、DAOMapper、Mapper映射文件" class="headerlink" title="使用MyBatis-generator自动生成DAO、DAOMapper、Mapper映射文件"></a>使用MyBatis-generator自动生成DAO、DAOMapper、Mapper映射文件</h2><h5 id="1、首先，在数据库中创建好需要的表。"><a href="#1、首先，在数据库中创建好需要的表。" class="headerlink" title="1、首先，在数据库中创建好需要的表。"></a>1、首先，在数据库中创建好需要的表。</h5><h5 id="2、然后，在pom-xml中添加插件依赖"><a href="#2、然后，在pom-xml中添加插件依赖" class="headerlink" title="2、然后，在pom.xml中添加插件依赖"></a>2、然后，在pom.xml中添加插件依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">id</span>&gt;</span>mybatis generator<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>generate<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--允许移动生成的文件--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">verbose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">verbose</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!--允许自动覆盖--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">                        src/main/resources/mybatis-generator.xml</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3、在resources目录下创建mybatis-generator-xml文件，编写配置如下"><a href="#3、在resources目录下创建mybatis-generator-xml文件，编写配置如下" class="headerlink" title="3、在resources目录下创建mybatis-generator.xml文件，编写配置如下"></a>3、在resources目录下创建mybatis-generator.xml文件，编写配置如下</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">generatorConfiguration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">generatorConfiguration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--数据库驱动--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;classPathEntry    location=&quot;D:\Java\apache-maven-3.5.4\repository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar&quot;/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context</span> <span class="attr">id</span>=<span class="string">&quot;DB2Tables&quot;</span>    <span class="attr">targetRuntime</span>=<span class="string">&quot;MyBatis3&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suppressDate&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suppressAllComments&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--数据库链接地址账号密码--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">jdbcConnection</span> <span class="attr">driverClass</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span> <span class="attr">connectionURL</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/miaosha?serverTimezone=UTC&quot;</span> <span class="attr">userId</span>=<span class="string">&quot;root&quot;</span> <span class="attr">password</span>=<span class="string">&quot;xxxx&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">jdbcConnection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;forceBigDecimals&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--生成dataobject类存放位置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">javaModelGenerator</span> <span class="attr">targetPackage</span>=<span class="string">&quot;com.example.springboot.dataobject&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/java&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;trimStrings&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaModelGenerator</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--生成映射文件存放位置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sqlMapGenerator</span> <span class="attr">targetPackage</span>=<span class="string">&quot;mapping&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/resources&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">sqlMapGenerator</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--生成Dao类存放位置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">javaClientGenerator</span> <span class="attr">type</span>=<span class="string">&quot;XMLMAPPER&quot;</span> <span class="attr">targetPackage</span>=<span class="string">&quot;com.example.springboot.dao&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/java&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaClientGenerator</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--生成对应表及类名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">&quot;user_info&quot;</span> <span class="attr">domainObjectName</span>=<span class="string">&quot;UserDAO&quot;</span> <span class="attr">enableCountByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableUpdateByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableDeleteByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableSelectByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">selectByExampleQueryId</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">&quot;user_password&quot;</span> <span class="attr">domainObjectName</span>=<span class="string">&quot;UserpasswordDAO&quot;</span> <span class="attr">enableCountByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableUpdateByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableDeleteByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableSelectByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">selectByExampleQueryId</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">generatorConfiguration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="4、启动mybatis-generator插件，生成数据层代码"><a href="#4、启动mybatis-generator插件，生成数据层代码" class="headerlink" title="4、启动mybatis-generator插件，生成数据层代码"></a>4、启动mybatis-generator插件，生成数据层代码</h5><p>mybatis-generator插件的启动方式如下，在IDEA的右侧边栏中打开Maven的菜单，找到图中的位置，单击即可。</p>
+<p><img src="images%5Cimage-20200725222250520.png" alt="image-20200725222250520"></p>
+<p>之后后自动生成所需的数据层类及对应的Mapper类和Mapper.xml映射文件。</p>
+<p>以下为自动生成的文件</p>
+<p><img src="images%5Cimage-20200725222427551.png" alt="image-20200725222427551"></p>
+<p><strong>注意：生成的代码中在dao文件夹的xxxDAOMapper接口中需要手动添加@Mapper注解，否则无法被SpringBoot识别，出现这种报错</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Description:</span><br><span class="line"></span><br><span class="line">Field userDAOMapper in com.gyj.springboot.controller.UserController required a bean of type <span class="string">&#x27;com.gyj.springboot.dao.UserDAOMapper&#x27;</span> that could not be found.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line"></span><br><span class="line">Consider defining a bean of type <span class="string">&#x27;com.gyj.springboot.dao.UserDAOMapper&#x27;</span> in your configuration.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:/Users/zjswd/Desktop/images/image-20200725223437917.png" alt="image-20200725223437917"></p>
+<p><strong>同时若多次点击插件启动器。而没有在生成之前将原来生成的文件删除，会带之Mapper.xml中的代码重复，导致报错。</strong></p>
+<p>​    解决：将原来自动生成的存放在resources/mapping文件夹中的xxxxMapper.xml文件删除，在重新自动生成。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;userController&#x27;: Unsatisfied dependency expressed through field &#x27;userDAOMapper&#x27;; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;userDAOMapper&#x27; defined in file [F:\freeProject\spring-boot-miaosha\target\classes\com\gyj\springboot\dao\UserDAOMapper.class]: Unsatisfied dependency expressed through bean property &#x27;sqlSessionFactory&#x27;; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#x27;sqlSessionFactory&#x27; defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method &#x27;sqlSessionFactory&#x27; threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: &#x27;file [F:\freeProject\spring-boot-miaosha\target\classes\mapping\UserDAOMapper.xml]&#x27;; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML.</span><br><span class="line"></span><br><span class="line">Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.gyj.springboot.dao.UserDAOMapper.BaseResultMap</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:/Users/zjswd/Desktop/images/image-20200725223815018.png" alt="image-20200725223815018"></p>
+<p><img src="C:/Users/zjswd/Desktop/images/image-20200725223856573.png" alt="image-20200725223856573"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<header class="article-header">
+  
+  
+  <a href="/2020/09/05/%E4%BD%BF%E7%94%A8MyBatis-generator%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90DAO%E3%80%81DAOMapper%E3%80%81Mapper%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2020-09-05T13:49:18.285Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
+</a>
+  
+    
+    
+  
+    
+    
+</header>
+  
     <article id="post-排序算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1100,108 +1177,6 @@
 
   
   <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E4%BD%8D%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-  
-    
-    
-  
-    
-    
-</header>
-  
-    <article id="post-剑指offer_Java实现——堆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/">堆</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/" class="archive-article-date">
-  	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="40-最小的k个数"><a href="#40-最小的k个数" class="headerlink" title="40. 最小的k个数"></a>40. 最小的k个数</h4><h5 id="题目：输入n个整数，找出其中最小的K个数。例如输入4-5-1-6-2-7-3-8这8个数字，则最小的4个数字是1-2-3-4"><a href="#题目：输入n个整数，找出其中最小的K个数。例如输入4-5-1-6-2-7-3-8这8个数字，则最小的4个数字是1-2-3-4" class="headerlink" title="题目：输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,"></a>题目：输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,</h5>
-        
-          <a class="article-more-a" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指Offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法解析//" class="article-tag-list-link color5">算法解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<header class="article-header">
-  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/">堆</a>
-    </h1>
-  
-
-  
-  <a href="/2020/08/11/%E5%89%91%E6%8C%87offer_Java%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E5%A0%86/" class="archive-article-date">
   	<time datetime="2020-08-11T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
 </a>
   
